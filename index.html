@@ -189,8 +189,8 @@
       border-radius: 50px;
       font-size: 1rem;
       cursor: not-allowed;
-      position: absolute;
-      transition: transform .18s ease, opacity .18s ease;
+      position: relative;
+      transition: left .18s ease, top .18s ease, opacity .18s ease;
       white-space: nowrap;
       user-select: none;
     }
@@ -280,7 +280,7 @@
 <!-- ══════════════ SCREEN 2: Letter ══════════════ -->
 <div class="page" id="letter-screen">
   <div class="letter-card">
-    <div class="letter-roses">🌹🌹🌹</div>
+    <div class="letter-roses">🇦🇱🌹🌹🌹</div>
     <h1 class="letter-title">Lamya,</h1>
     <p class="letter-subtitle">A very special invitation just for you</p>
 
@@ -325,7 +325,7 @@
       Lamya, you said yes — and now the adventure begins.<br>
       Sunshine, music, amazing food and you… this is going to be unforgettable. 🌹
     </p>
-    <div style="font-size:3rem;animation:spinRoses 3s ease-in-out infinite">🇪🇸🌹🇲🇦</div>
+    <div style="font-size:3rem;animation:spinRoses 3s ease-in-out infinite">🇦🇱🇪🇸🌹🇲🇦</div>
   </div>
 </div>
 
@@ -385,22 +385,26 @@
   function escapeNo(e) {
     e.preventDefault();
     const btn = document.getElementById('btn-no');
-    const row = document.getElementById('btn-row');
-    const rowRect = row.getBoundingClientRect();
+
+    // First hover: snap to fixed position matching current location, then jump away
+    if (escapeCount === 0) {
+      const rect = btn.getBoundingClientRect();
+      btn.style.position = 'fixed';
+      btn.style.left = rect.left + 'px';
+      btn.style.top  = rect.top  + 'px';
+      btn.style.right = 'auto';
+      btn.style.margin = '0';
+    }
 
     const maxX = window.innerWidth  - btn.offsetWidth  - 20;
     const maxY = window.innerHeight - btn.offsetHeight - 20;
 
-    let nx = Math.random() * maxX;
-    let ny = Math.random() * maxY - rowRect.top;
+    const nx = Math.max(10, Math.random() * maxX);
+    const ny = Math.max(10, Math.random() * maxY);
 
-    // Keep within viewport
-    nx = Math.max(10, Math.min(nx, maxX));
-
-    btn.style.position = 'fixed';
+    btn.style.transition = 'left .25s ease, top .25s ease, opacity .3s ease';
     btn.style.left = nx + 'px';
-    btn.style.top  = Math.max(10, Math.min(Math.random() * maxY, maxY)) + 'px';
-    btn.style.right = 'auto';
+    btn.style.top  = ny + 'px';
 
     escapeCount++;
     const msg = document.getElementById('escape-msg');
