@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lamya — A Very Special Invitation 🌹</title>
+  <title>Lamya — A Very Special Invitation</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
 
@@ -24,20 +24,16 @@
       cursor: default;
     }
 
-    /* ── Stars ── */
     #stars {
       position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background: radial-gradient(ellipse at bottom, #1b0033 0%, #0d0010 80%);
     }
     .star {
-      position: absolute;
-      border-radius: 50%;
-      background: #fff;
+      position: absolute; border-radius: 50%; background: #fff;
       animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
     }
-    @keyframes twinkle { from { opacity: .2; transform: scale(.8); } to { opacity: 1; transform: scale(1.2); } }
+    @keyframes twinkle { from{opacity:.2;transform:scale(.8)} to{opacity:1;transform:scale(1.2)} }
 
-    /* ── Page sections ── */
     .page {
       position: relative; z-index: 1;
       min-height: 100vh;
@@ -46,9 +42,8 @@
       padding: 2rem;
     }
 
-    /* ── Envelope screen ── */
+    /* ── Envelope ── */
     #envelope-screen { cursor: pointer; }
-
     .envelope-wrap { position: relative; width: 300px; height: 200px; }
     .envelope {
       width: 300px; height: 200px;
@@ -60,55 +55,37 @@
       transition: transform .3s;
     }
     .envelope:hover { transform: scale(1.04); }
-    @keyframes floatEnv {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
+    @keyframes floatEnv { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
     .envelope::before {
-      content: '';
-      position: absolute; top: 0; left: 0;
-      border-left: 150px solid transparent;
-      border-right: 150px solid transparent;
-      border-top: 100px solid rgba(0,0,0,.25);
+      content:''; position:absolute; top:0; left:0;
+      border-left:150px solid transparent; border-right:150px solid transparent;
+      border-top:100px solid rgba(0,0,0,.25);
     }
     .envelope::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0;
-      border-left: 150px solid transparent;
-      border-right: 150px solid transparent;
-      border-bottom: 100px solid rgba(0,0,0,.15);
+      content:''; position:absolute; bottom:0; left:0;
+      border-left:150px solid transparent; border-right:150px solid transparent;
+      border-bottom:100px solid rgba(0,0,0,.15);
     }
     .envelope-seal {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 50px; height: 50px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      z-index: 2;
-      box-shadow: 0 0 20px rgba(201,168,76,.8);
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:50px; height:50px; background:var(--gold); border-radius:50%;
+      display:flex; align-items:center; justify-content:center; font-size:1.4rem;
+      z-index:2; box-shadow:0 0 20px rgba(201,168,76,.8);
       animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse { 0%,100%{box-shadow:0 0 20px rgba(201,168,76,.8)} 50%{box-shadow:0 0 40px rgba(201,168,76,1)} }
-
     .tap-hint {
-      margin-top: 2rem;
-      color: var(--gold);
-      font-size: .9rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
+      margin-top:2rem; color:var(--gold); font-size:.9rem;
+      letter-spacing:.2em; text-transform:uppercase;
       animation: blink 1.5s ease-in-out infinite;
     }
     @keyframes blink { 0%,100%{opacity:.4} 50%{opacity:1} }
 
-    /* ── Letter screen ── */
+    /* ── Letter ── */
     #letter-screen { display: none; }
-
     .letter-card {
       max-width: 560px; width: 100%;
-      background: var(--cream);
-      border-radius: 12px;
+      background: var(--cream); border-radius: 12px;
       padding: 3rem 2.5rem;
       box-shadow: 0 30px 80px rgba(0,0,0,.6);
       text-align: center;
@@ -116,124 +93,115 @@
     }
     @keyframes slideUp { from{opacity:0;transform:translateY(60px)} to{opacity:1;transform:translateY(0)} }
 
-    .letter-roses {
-      font-size: 2.5rem;
-      margin-bottom: .5rem;
-      animation: spinRoses 6s linear infinite;
+    /* Flags row */
+    .flags-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: .5rem; margin-bottom: .8rem;
     }
-    @keyframes spinRoses { 0%{transform:rotate(-5deg)} 50%{transform:rotate(5deg)} 100%{transform:rotate(-5deg)} }
+    .flags-row img {
+      width: 36px; height: 27px;
+      border-radius: 3px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    }
+    .flags-row span { font-size: 1.6rem; }
 
     .letter-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: var(--red);
-      margin-bottom: .3rem;
+      font-family: 'Playfair Display', serif; font-size: 2rem;
+      color: var(--red); margin-bottom: .3rem;
     }
     .letter-subtitle {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      color: #7a4000;
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
+      font-family: 'Playfair Display', serif; font-style: italic;
+      color: #7a4000; font-size: 1rem; margin-bottom: 1.5rem;
     }
     .letter-body {
-      color: #3a2000;
-      line-height: 1.8;
-      font-size: 1rem;
-      margin-bottom: 1.8rem;
+      color: #3a2000; line-height: 1.8; font-size: 1rem; margin-bottom: 1.8rem;
     }
     .letter-body strong { color: var(--red); }
 
     .destination-pills {
       display: flex; flex-wrap: wrap; gap: .6rem;
-      justify-content: center;
-      margin-bottom: 2rem;
+      justify-content: center; margin-bottom: 2rem;
     }
     .pill {
-      background: var(--red);
-      color: #fff;
-      border-radius: 50px;
-      padding: .35rem .9rem;
-      font-size: .82rem;
-      font-weight: 700;
-      letter-spacing: .05em;
+      background: var(--red); color: #fff; border-radius: 50px;
+      padding: .35rem .9rem; font-size: .82rem; font-weight: 700; letter-spacing: .05em;
     }
 
     /* ── Buttons ── */
     .btn-row {
-      display: flex; gap: 1rem; justify-content: center;
-      flex-wrap: wrap;
-      position: relative;
+      display: flex; gap: 1.2rem; justify-content: center;
+      align-items: center; flex-wrap: nowrap;
     }
 
     .btn-yes {
       background: linear-gradient(135deg, var(--red), #8b0000);
-      color: #fff;
-      border: none;
+      color: #fff; border: none;
       padding: .85rem 2.5rem;
-      border-radius: 50px;
-      font-size: 1.1rem;
+      border-radius: 50px; font-size: 1.1rem;
       font-family: 'Playfair Display', serif;
       cursor: pointer;
       box-shadow: 0 8px 30px rgba(192,57,43,.5);
-      transition: transform .15s, box-shadow .15s;
+      transform-origin: center;
+      transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, font-size .4s;
     }
-    .btn-yes:hover { transform: scale(1.06); box-shadow: 0 12px 40px rgba(192,57,43,.7); }
-    .btn-yes:active { transform: scale(.97); }
+    .btn-yes:active { filter: brightness(1.1); }
 
     .btn-no {
-      background: #ccc;
-      color: #888;
-      border: none;
-      padding: .85rem 2rem;
-      border-radius: 50px;
-      font-size: 1rem;
-      cursor: not-allowed;
-      position: relative;
-      transition: left .18s ease, top .18s ease, opacity .18s ease;
-      white-space: nowrap;
-      user-select: none;
+      background: #ccc; color: #888; border: none;
+      padding: .85rem 2rem; border-radius: 50px;
+      font-size: 1rem; cursor: pointer;
+      transform-origin: center;
+      transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .4s, font-size .4s;
+      white-space: nowrap; user-select: none; flex-shrink: 0;
+    }
+
+    #escape-msg {
+      font-size: .75rem; color: #999; margin-top: .5rem;
+      min-height: 1.2em; font-style: italic;
     }
 
     /* ── Yes screen ── */
     #yes-screen { display: none; }
-
     .yes-card {
-      max-width: 520px; width: 100%;
-      text-align: center;
+      max-width: 520px; width: 100%; text-align: center;
       animation: popIn .7s cubic-bezier(.34,1.56,.64,1) both;
     }
     @keyframes popIn { from{opacity:0;transform:scale(.5)} to{opacity:1;transform:scale(1)} }
-
     .yes-emoji { font-size: 5rem; display: block; margin-bottom: 1rem; }
     .yes-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      color: var(--gold);
-      text-shadow: 0 0 30px rgba(201,168,76,.8);
-      margin-bottom: .6rem;
+      font-family: 'Playfair Display', serif; font-size: 2.6rem;
+      color: var(--gold); text-shadow: 0 0 30px rgba(201,168,76,.8); margin-bottom: .6rem;
     }
     .yes-sub {
-      color: #e8c87a;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      max-width: 400px;
-      margin: 0 auto 2rem;
+      color: #e8c87a; font-size: 1.1rem; line-height: 1.7;
+      max-width: 400px; margin: 0 auto 2rem;
     }
+    .yes-flags {
+      display: flex; align-items: center; justify-content: center;
+      gap: .6rem; margin-top: .5rem;
+    }
+    .yes-flags img {
+      width: 48px; height: 36px; border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.5);
+      animation: flagBounce 1.5s ease-in-out infinite alternate;
+    }
+    .yes-flags img:nth-child(2) { animation-delay: .3s; }
+    .yes-flags img:nth-child(3) { animation-delay: .6s; }
+    .yes-flags span { font-size: 2.5rem; }
+    @keyframes flagBounce { from{transform:translateY(0)} to{transform:translateY(-8px)} }
 
+    /* ── Confetti ── */
     .confetti-piece {
-      position: fixed;
-      width: 10px; height: 10px;
-      border-radius: 2px;
+      position: fixed; border-radius: 2px;
       animation: fall var(--fd, 3s) linear var(--fdelay, 0s) forwards;
       pointer-events: none; z-index: 999;
     }
     @keyframes fall {
-      0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) rotate(720deg); opacity: .2; }
+      0%  { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100%{ transform: translateY(110vh)  rotate(720deg); opacity: .2; }
     }
 
-    /* ── Floating rose petals ── */
+    /* ── Petals ── */
     .petal {
       position: fixed; pointer-events: none; z-index: 0;
       font-size: 1.2rem;
@@ -241,21 +209,10 @@
       opacity: .7;
     }
     @keyframes petalFall {
-      0%   { transform: translateY(-40px) translateX(0) rotate(0deg); opacity:.7; }
-      100% { transform: translateY(110vh) translateX(var(--px,30px)) rotate(360deg); opacity:0; }
+      0%  { transform: translateY(-40px) translateX(0) rotate(0deg); opacity:.7; }
+      100%{ transform: translateY(110vh) translateX(var(--px,30px)) rotate(360deg); opacity:0; }
     }
 
-    /* ── Escape counter ── */
-    #escape-msg {
-      font-size: .75rem;
-      color: #aaa;
-      margin-top: .4rem;
-      min-height: 1.1em;
-      font-style: italic;
-      transition: opacity .3s;
-    }
-
-    /* ── Responsive ── */
     @media(max-width:480px){
       .letter-card{ padding:2rem 1.2rem; }
       .yes-title{ font-size:2rem; }
@@ -264,10 +221,9 @@
 </head>
 <body>
 
-<!-- Stars background -->
 <div id="stars"></div>
 
-<!-- ══════════════ SCREEN 1: Envelope ══════════════ -->
+<!-- ══ SCREEN 1: Envelope ══ -->
 <div class="page" id="envelope-screen" onclick="openEnvelope()">
   <div class="envelope-wrap">
     <div class="envelope">
@@ -277,10 +233,16 @@
   <p class="tap-hint">✦ Click to open ✦</p>
 </div>
 
-<!-- ══════════════ SCREEN 2: Letter ══════════════ -->
+<!-- ══ SCREEN 2: Letter ══ -->
 <div class="page" id="letter-screen">
   <div class="letter-card">
-    <div class="letter-roses">🇦🇱🌹🌹🌹</div>
+
+    <div class="flags-row">
+      <img src="https://flagcdn.com/48x36/al.png" alt="Albania" title="Albania">
+      <span>🌹</span>
+      <img src="https://flagcdn.com/48x36/ma.png" alt="Morocco" title="Morocco">
+    </div>
+
     <h1 class="letter-title">Lamya,</h1>
     <p class="letter-subtitle">A very special invitation just for you</p>
 
@@ -300,23 +262,18 @@
       <span class="pill">🍷 Sevilla</span>
     </div>
 
-    <p class="letter-body">
-      Would you like to come explore Spain with me?
-    </p>
+    <p class="letter-body">Would you like to come explore Spain with me?</p>
 
-    <div class="btn-row" id="btn-row">
-      <button class="btn-yes" onclick="sayYes()">Yes, I'd love to! 💃</button>
-      <button class="btn-no" id="btn-no"
-        onmouseover="escapeNo(event)"
-        onclick="escapeNo(event)">
-        No…
-      </button>
+    <div class="btn-row">
+      <button class="btn-yes" id="btn-yes" onclick="sayYes()">Yes, I'd love to! 💃</button>
+      <button class="btn-no" id="btn-no" onclick="pressNo()">No…</button>
     </div>
     <p id="escape-msg"></p>
+
   </div>
 </div>
 
-<!-- ══════════════ SCREEN 3: Yes! ══════════════ -->
+<!-- ══ SCREEN 3: Yes! ══ -->
 <div class="page" id="yes-screen">
   <div class="yes-card">
     <span class="yes-emoji">💃🕺</span>
@@ -325,124 +282,92 @@
       Lamya, you said yes — and now the adventure begins.<br>
       Sunshine, music, amazing food and you… this is going to be unforgettable. 🌹
     </p>
-    <div style="font-size:3rem;animation:spinRoses 3s ease-in-out infinite">🇦🇱🇪🇸🌹🇲🇦</div>
+    <div class="yes-flags">
+      <img src="https://flagcdn.com/48x36/al.png" alt="Albania">
+      <span>🌹</span>
+      <img src="https://flagcdn.com/48x36/es.png" alt="Spain">
+      <span>🌹</span>
+      <img src="https://flagcdn.com/48x36/ma.png" alt="Morocco">
+    </div>
   </div>
 </div>
 
 <script>
-  // ── Stars ──
+  // Stars
   const starsEl = document.getElementById('stars');
   for (let i = 0; i < 160; i++) {
     const s = document.createElement('div');
     s.className = 'star';
     const sz = Math.random() * 2.5 + .5;
-    s.style.cssText = `
-      width:${sz}px; height:${sz}px;
-      top:${Math.random()*100}%;
-      left:${Math.random()*100}%;
-      --d:${(Math.random()*3+2).toFixed(1)}s;
-      animation-delay:${(Math.random()*3).toFixed(1)}s;
-    `;
+    s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*3+2).toFixed(1)}s;animation-delay:${(Math.random()*3).toFixed(1)}s;`;
     starsEl.appendChild(s);
   }
 
-  // ── Petals (always floating) ──
-  const PETALS = ['🌹','🌺','🌸','💮'];
+  // Petals
+  const PETALS = ['🌹','🌺','🌸'];
   for (let i = 0; i < 14; i++) {
     const p = document.createElement('div');
     p.className = 'petal';
     p.textContent = PETALS[Math.floor(Math.random()*PETALS.length)];
-    p.style.cssText = `
-      left:${Math.random()*100}vw;
-      --pd:${(Math.random()*6+6).toFixed(1)}s;
-      --pdelay:${(Math.random()*8).toFixed(1)}s;
-      --px:${(Math.random()*80-40).toFixed(0)}px;
-    `;
+    p.style.cssText = `left:${Math.random()*100}vw;--pd:${(Math.random()*6+6).toFixed(1)}s;--pdelay:${(Math.random()*8).toFixed(1)}s;--px:${(Math.random()*80-40).toFixed(0)}px;`;
     document.body.appendChild(p);
   }
 
-  // ── Envelope open ──
   function openEnvelope() {
     document.getElementById('envelope-screen').style.display = 'none';
-    const ls = document.getElementById('letter-screen');
-    ls.style.display = 'flex';
+    document.getElementById('letter-screen').style.display = 'flex';
   }
 
-  // ── No button escape logic ──
-  let escapeCount = 0;
+  // No button — shrink No, grow Yes each click
+  let noCount = 0;
+  let yesScale = 1;
+  let noScale  = 1;
+
   const msgs = [
-    "Hmm, No? Try again… 😏",
-    "That button is a little shy 😄",
-    "It runs fast, doesn't it! 🏃",
-    "There really is no No here 🌹",
-    "Spain is waiting for you, Lamya! 💃",
-    "No simply doesn't exist for us 😘",
-    "This button refuses to cooperate!",
-    "Running away again… 🚀",
-    "OK fine, it's gone for good 😂",
+    "Are you sure? 😏",
+    "Yes is right there… 😄",
+    "Spain is calling you! 🌞",
+    "The No button is shrinking… 😂",
+    "It's getting tiny! 🤏",
+    "Almost gone… 👀",
+    "Last chance for No! 😅",
+    "Okay, No is gone forever 😂",
   ];
 
-  function escapeNo(e) {
-    e.preventDefault();
-    const btn = document.getElementById('btn-no');
+  function pressNo() {
+    noCount++;
+    const btnYes = document.getElementById('btn-yes');
+    const btnNo  = document.getElementById('btn-no');
 
-    // First hover: snap to fixed position matching current location, then jump away
-    if (escapeCount === 0) {
-      const rect = btn.getBoundingClientRect();
-      btn.style.position = 'fixed';
-      btn.style.left = rect.left + 'px';
-      btn.style.top  = rect.top  + 'px';
-      btn.style.right = 'auto';
-      btn.style.margin = '0';
-    }
+    yesScale = Math.min(yesScale + 0.18, 2.2);
+    noScale  = Math.max(noScale  - 0.18, 0.05);
 
-    const maxX = window.innerWidth  - btn.offsetWidth  - 20;
-    const maxY = window.innerHeight - btn.offsetHeight - 20;
+    btnYes.style.transform = `scale(${yesScale.toFixed(2)})`;
+    btnNo.style.transform  = `scale(${noScale.toFixed(2)})`;
+    btnNo.style.opacity    = String(Math.max(noScale, 0.05));
 
-    const nx = Math.max(10, Math.random() * maxX);
-    const ny = Math.max(10, Math.random() * maxY);
-
-    btn.style.transition = 'left .25s ease, top .25s ease, opacity .3s ease';
-    btn.style.left = nx + 'px';
-    btn.style.top  = ny + 'px';
-
-    escapeCount++;
     const msg = document.getElementById('escape-msg');
-    msg.textContent = msgs[Math.min(escapeCount - 1, msgs.length - 1)];
+    msg.textContent = msgs[Math.min(noCount - 1, msgs.length - 1)];
 
-    if (escapeCount >= 4) {
-      btn.style.opacity = String(Math.max(0.05, 1 - (escapeCount - 3) * .2));
-    }
-    if (escapeCount >= 7) {
-      btn.style.display = 'none';
-      msg.textContent = "No has disappeared forever 😂 Only one option left… Yes! 💃";
+    if (noCount >= 8) {
+      btnNo.style.display = 'none';
+      msg.textContent = "No has vanished forever 😂 Only YES remains! 💃";
     }
   }
 
-  // ── Yes ──
   function sayYes() {
     document.getElementById('letter-screen').style.display = 'none';
-    const ys = document.getElementById('yes-screen');
-    ys.style.display = 'flex';
+    document.getElementById('yes-screen').style.display = 'flex';
     launchConfetti();
   }
 
   function launchConfetti() {
-    const colors = ['#c0392b','#c9a84c','#e74c3c','#f39c12','#fff','#8e44ad','#27ae60'];
-    for (let i = 0; i < 120; i++) {
+    const colors = ['#c0392b','#c9a84c','#e74c3c','#f39c12','#fff','#e8175d','#27ae60'];
+    for (let i = 0; i < 140; i++) {
       const c = document.createElement('div');
       c.className = 'confetti-piece';
       const color = colors[Math.floor(Math.random()*colors.length)];
-      c.style.cssText = `
-        left:${Math.random()*100}vw;
-        top:-10px;
-        background:${color};
-        width:${Math.random()*10+6}px;
-        height:${Math.random()*10+6}px;
-        border-radius:${Math.random()>.5?'50%':'2px'};
-        --fd:${(Math.random()*3+2).toFixed(1)}s;
-        --fdelay:${(Math.random()*2).toFixed(2)}s;
-      `;
+      c.style.cssText = `left:${Math.random()*100}vw;top:-10px;background:${color};width:${Math.random()*10+5}px;height:${Math.random()*10+5}px;border-radius:${Math.random()>.5?'50%':'2px'};--fd:${(Math.random()*3+2).toFixed(1)}s;--fdelay:${(Math.random()*2).toFixed(2)}s;`;
       document.body.appendChild(c);
     }
   }
